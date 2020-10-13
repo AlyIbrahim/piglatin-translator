@@ -27,7 +27,7 @@ public class PiglatinResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String translate(String input, @PathParam String command, @PathParam String text) throws UnsupportedEncodingException {
+    public String translate(String input, @PathParam String text) throws UnsupportedEncodingException {
         LOG.info(input);
 
         HashMap<String, String> paramsMap = new HashMap<String, String>();
@@ -38,13 +38,7 @@ public class PiglatinResource {
             LOG.info(param.split("=")[1]);
             paramsMap.put( URLDecoder.decode(param.split("=")[0], StandardCharsets.UTF_8.name()) , URLDecoder.decode(param.split("=")[1], StandardCharsets.UTF_8.name()) );
         }
-        switch (paramsMap.get("command")) {
-            case "/piglatin":
-                return piglatinHandler(paramsMap.get("text"));
-            default:
-                return "Unknown Command";
-        }
-
+            return piglatinHandler(paramsMap.get("text"));
     }
 
     private String piglatinHandler(String inputtext){
