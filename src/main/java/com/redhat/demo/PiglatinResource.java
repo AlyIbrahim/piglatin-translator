@@ -31,9 +31,9 @@ public class PiglatinResource {
     private PigLatin pigLatin;
     private static final Logger LOG = Logger.getLogger(PiglatinResource.class);
 
-    @Inject
-    @Channel("slack")
-    Emitter<PigLatin> slackEmitter;
+    // @Inject
+    // @Channel("slack")
+    // Emitter<PigLatin> slackEmitter;
 
     public PiglatinResource() {
     }
@@ -61,7 +61,7 @@ public class PiglatinResource {
         pigLatin.translateToPigLatin();
         BigInteger fact=BigInteger.valueOf(1); 
         LOG.info(pigLatin.inputText + " translated to " + pigLatin.outputText + " (" + fact + ")");
-        slackEmitter.send(pigLatin);
+        // slackEmitter.send(pigLatin);
         return pigLatin.outputText;
     }
 }
