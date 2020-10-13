@@ -49,8 +49,8 @@ public class PiglatinResource {
 
         String[] params = input.split("&");
         for (String param : params){
-            LOG.info(param.split("=")[0]);
-            LOG.info(param.split("=")[1]);
+            // LOG.info(param.split("=")[0]);
+            // LOG.info(param.split("=")[1]);
             paramsMap.put( URLDecoder.decode(param.split("=")[0], StandardCharsets.UTF_8.name()) , URLDecoder.decode(param.split("=")[1], StandardCharsets.UTF_8.name()) );
         }
             return piglatinHandler(paramsMap.get("text"));
